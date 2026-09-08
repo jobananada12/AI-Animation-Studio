@@ -1,36 +1,49 @@
 # AI Animation Studio
 
-AI-assisted animation production pipeline.
+AI-assisted production of original long-form YouTube stories.
 
-## Vision
+## New direction
 
-Turn a story idea into a structured animation project through a professional-style pipeline:
+The project is being built around a narrated **30-minute YouTube episode**:
 
-`Idea → Script → Storyboard → Animatic → Characters → Animation → Lip Sync → Compositing → Sound → Final Render`
+`Idea → Original Story → Chapter/Beat Plan → Image Prompts → Ukrainian Narration → Image Sequence → Music/SFX → Final MP4`
 
-## Project status
+The goal is not to make a conventional frame-by-frame cartoon. It is a cinematic narrated story where AI-generated illustrations change according to the meaning of the narration, with subtle camera motion and transitions.
 
-🚧 Early development — foundation stage.
+## Episode targets
+
+- approximately 30 minutes;
+- approximately 3,900–4,500 Ukrainian narration words;
+- strong hook in the first 30 seconds;
+- three-act narrative with escalation and payoff;
+- visual beats around 8–15 seconds;
+- original plot and characters for every episode;
+- stable visual descriptions for recurring characters;
+- image prompts tied to the exact narration beat;
+- one narrator voice, using the existing FilmDubUA TTS implementation through an adapter.
 
 ## Architecture
 
-- `app/` — desktop/user interface
-- `core/` — project model and pipeline orchestration
-- `agents/` — specialized AI production agents
-- `media/` — generated and source media
-- `projects/` — animation projects
-- `output/` — rendered results
-- `tests/` — automated tests
+- `app/` — application/CLI
+- `core/` — project model, LLM and production rules
+- `agents/` — story and media-planning agents
+- `providers/` — TTS and future image-generation providers
+- `projects/` — episode projects
+- `output/` — rendered videos
 
-## Planned agents
+## FilmDubUA integration
 
-- Script Agent
-- Storyboard Agent
-- Character Agent
-- Animation Agent
-- Audio Agent
-- Render Agent
+`providers/filmdubua_tts.py` loads the existing TTS implementation from a local FilmDubUA checkout. Set `FILMDUBUA_ROOT` to that directory. Credentials and tokens are intentionally not copied into this repository.
 
-## Local-first direction
+## Pipeline roadmap
 
-The project is designed to support local AI models and tools where practical, including FFmpeg and local LLM/TTS/image-generation components.
+1. Long-form Story Agent
+2. Story quality/repetition checker
+3. Character bible
+4. Visual Beat / Storyboard Agent
+5. Image Generator Provider
+6. FilmDubUA narration provider
+7. Music/SFX planner
+8. FFmpeg editor and Ken Burns-style motion
+9. Final 16:9 YouTube render
+10. Thumbnail and title generator
